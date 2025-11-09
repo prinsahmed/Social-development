@@ -1,0 +1,28 @@
+import React from 'react';
+import NavBar from '../common/NavBar.jsx';
+import Banner from '../../pages/home/Banner.jsx';
+import Feature from '../../pages/home/Feature.jsx';
+import Gallery from '../../pages/home/Gallery.jsx';
+import NewsLetter from '../../pages/home/NewsLetter.jsx';
+
+
+const MainLayout = () => {
+    return (
+
+        <>
+            <NavBar />
+            <Banner />
+            <main className='bg-gradient-to-br from-blue-100 to-amber-50 min-h-screen'>
+                <div className='max-w-11/12 mx-auto'>
+                    <Feature />
+                    <Gallery />
+                    <NewsLetter/>
+                </div>
+            </main>
+        </>
+
+
+    );
+};
+
+export default MainLayout;

@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+
+.hero1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+
+.hero-content1 {
+  position: relative; 
+  z-index: 1;
+  
+  
+}
+
+.feature-card{
+  @apply bg-[#D9F0D9] rounded-sm p-4 
+}
+
+.feature-head{
+ @apply text-center text-xl font-medium 
+}
+
+.feature-location{
+  @apply text-[18px] font-semibold
+}
+
+.feature-number{
+  @apply text-[18px] font-semibold
+}
