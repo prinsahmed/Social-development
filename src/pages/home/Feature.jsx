@@ -2,7 +2,7 @@ import React from 'react';
 
 const Feature = () => {
     return (
-        <div className='pt-24 '>
+        <div className='pt-36 '>
             <h2 className='text-4xl font-semibold text-center pb-6'>Connecting Hearts, Building Communities</h2>
             <div className='grid grid-cols-3 gap-4'>
                 <div className='feature-card'>

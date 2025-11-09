@@ -4,18 +4,12 @@ import React from 'react';
 const NewsLetter = () => {
 
     return (
-        <div className='pt-24'>
+        <div className='py-36'>
             <div className="max-w-6xl mx-auto  md:p-10 bg-white rounded-xl shadow-lg ">
-
-
-                <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+                <h2 className="text-4xl font-semibold text-gray-800 mb-6 text-center">
                     Subscribe Our Newsletter
                 </h2>
-
-
                 <form className="flex flex-col md:flex-row items-center justify-center gap-4">
-
-
                     <input
                         type="text"
                         placeholder="Your name"
@@ -23,7 +17,6 @@ const NewsLetter = () => {
                      focus:outline-none focus:ring-2 focus:ring-blue-500 
                      placeholder:text-gray-500"
                     />
-
                     <input
                         type="email"
                         placeholder="Your email"
