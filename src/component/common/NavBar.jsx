@@ -37,7 +37,7 @@ const NavBar = () => {
                         tabIndex="-1"
                         className="menu  menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 bg-gradient-to-b from-[#1E1E1E] via-[#3B2F2F] to-[#0F0A0A]  shadow">
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink >Events</NavLink></li>
+                        <li><NavLink to='/up-event' >Events</NavLink></li>
                         <li><NavLink >Profile</NavLink></li>
                         {
                             user ?
@@ -65,7 +65,7 @@ const NavBar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu navi text-white menu-horizontal px-1">
                         <li ><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink >Events</NavLink></li>
+                        <li><NavLink to='/up-event' >Events</NavLink></li>
                         <li><NavLink >Profile</NavLink></li>
                         {
                             user ?

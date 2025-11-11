@@ -6,6 +6,7 @@ import Register from "../pages/authentication/Register";
 import CreateEventLayout from "../component/layout/CreateEventLayout";
 import PrivateRoute from "../component/common/PrivateRoute";
 import CreateEvent from "../pages/create event/CreateEvent";
+import UpcomingEventLayout from "../component/layout/UpcomingEventLayout";
 
 
 
@@ -33,5 +34,9 @@ export const router = createBrowserRouter([
         element:<PrivateRoute>
             <CreateEventLayout/>
         </PrivateRoute>
+    },
+    {
+        path:'/up-event',
+        Component:UpcomingEventLayout
     }
 ])
