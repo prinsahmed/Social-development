@@ -4,7 +4,7 @@
 
 
 
-.hero1::before {
+/* .hero1::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -17,7 +17,7 @@
   z-index: 1;
   
   
-}
+} */
 
 .feature-card{
   @apply bg-[#D9F0D9] rounded-sm p-4 

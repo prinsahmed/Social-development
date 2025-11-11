@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { axiosInstance } from '../../api/axiosInstance';
+import { Link } from 'react-router';
 
 const UpcomingEvent = () => {
     const [events, setEvents] = useState();
     const[loading, setLoading] = useState(true);
-    console.log(events)
-
+ 
+ console.log(events);
 
     useEffect(() => {
         axiosInstance.get('/events')
@@ -43,9 +44,9 @@ const UpcomingEvent = () => {
                                 Date: {new Date(event.selectedDate).toLocaleDateString()}
                             </p>
 
-                            <button className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <Link to={`/up-event/details/${event._id}`} className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
                                 View Event
-                            </button>
+                            </Link> 
                         </div>
                     </div>
                 })

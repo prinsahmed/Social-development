@@ -27,7 +27,7 @@ const NavBar = () => {
 
 
     return (
-        <div className=" lg:flex justify-between items-center mt-0  absolute  w-full z-50  backdrop-blur-[1px] ">
+        <div className=" lg:flex justify-between items-center bg-black ">
             <div className='flex  justify-between items-center pl-3'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

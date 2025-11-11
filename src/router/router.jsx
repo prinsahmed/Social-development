@@ -4,9 +4,10 @@ import RegisterLayout from "../component/layout/RegisterLayout";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import CreateEventLayout from "../component/layout/CreateEventLayout";
-import PrivateRoute from "../component/common/PrivateRoute";
-import CreateEvent from "../pages/create event/CreateEvent";
 import UpcomingEventLayout from "../component/layout/UpcomingEventLayout";
+import PrivateRoute from "../component/common/PrivateRoute";
+import EventDetails from "../pages/upcoming event/EventDetails";
+import UpcomingEvent from "../pages/upcoming event/UpcomingEvent";
 
 
 
@@ -31,12 +32,22 @@ export const router = createBrowserRouter([
     },
     {
         path: '/create-event',
-        element:<PrivateRoute>
-            <CreateEventLayout/>
+        element: <PrivateRoute>
+            <CreateEventLayout />
         </PrivateRoute>
     },
     {
-        path:'/up-event',
-        Component:UpcomingEventLayout
+        path: '/up-event',
+        Component:UpcomingEventLayout , 
+        children: [
+            {
+                index:true,
+                Component: UpcomingEvent
+            },
+            {
+                path: '/up-event/details/:id',
+                Component: EventDetails
+            }
+        ]
     }
 ])

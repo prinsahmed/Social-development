@@ -1,12 +1,12 @@
 import React from 'react';
 import NavBar from '../common/NavBar';
-import UpcomingEvent from '../../pages/upcoming event/UpcomingEvent';
+import { Outlet } from 'react-router';
 
 const UpcomingEventLayout = () => {
     return (
         <div>
             <NavBar/>
-            <UpcomingEvent/>
+            <Outlet/>
         </div>
     );
 };
