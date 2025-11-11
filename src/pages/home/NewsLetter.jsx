@@ -4,7 +4,7 @@ import React from 'react';
 const NewsLetter = () => {
 
     return (
-        <div className='py-36'>
+        <div className='py-28'>
             <div className="max-w-6xl mx-auto  md:p-10 bg-white rounded-xl shadow-lg ">
                 <h2 className="text-4xl font-semibold text-gray-800 mb-6 text-center">
                     Subscribe Our Newsletter

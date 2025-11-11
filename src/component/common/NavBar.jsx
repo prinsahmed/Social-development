@@ -1,14 +1,25 @@
-import React from 'react';
+import { signOut } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
+import { auth } from '../../firebase/firebase';
+import { Context } from '../../context/AuthContext';
 
 const NavBar = () => {
+    const [profile, setProfile] = useState(false);
+    const {user} = useContext(Context);
 
-    
-    const navigate =useNavigate();
 
-    const user = 'sfj'
+    const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gradient-to-b from-rose-100 via-amber-100 to-amber-50 text-gray-800 '>
+        <li><Link className='block'>Create Event</Link></li>
+        <li><Link>Manage Events</Link></li>
+        <li><Link>Joined Events</Link></li>
+    </ul>
+
+    const navigate = useNavigate();
+
+
     function handleSignOut() {
-        signningOut()
+        signOut(auth)
             .then(() => navigate('/'));
     }
 
@@ -26,8 +37,8 @@ const NavBar = () => {
                         tabIndex="-1"
                         className="menu  menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 bg-gradient-to-b from-[#1E1E1E] via-[#3B2F2F] to-[#0F0A0A]  shadow">
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/games'>Events</NavLink></li>
-                        <li><NavLink to='/my-profile'>Profile</NavLink></li>
+                        <li><NavLink >Events</NavLink></li>
+                        <li><NavLink >Profile</NavLink></li>
                         {
                             user ?
                                 <>
@@ -37,8 +48,8 @@ const NavBar = () => {
                                 </>
                                 :
                                 <>
-                                    <li><NavLink to='/login'>Login</NavLink></li>
-                                    <li><NavLink to='/register'>Register</NavLink></li>
+                                    <li><NavLink to='/auth/login'>Login</NavLink></li>
+                                    <li><NavLink to='/auth/register'>Register</NavLink></li>
                                 </>
 
                         }
@@ -54,21 +65,24 @@ const NavBar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu navi text-white menu-horizontal px-1">
                         <li ><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/games'>Events</NavLink></li>
-                        <li><NavLink to='/my-profile'>Profile</NavLink></li>
+                        <li><NavLink >Events</NavLink></li>
+                        <li><NavLink >Profile</NavLink></li>
                         {
                             user ?
                                 <>
 
                                     <button onClick={handleSignOut} className='btn mx-3'>Log Out</button>
-                                    <li>
-                                        <Link to='/my-profile'><img className='w-8 h-8 rounded-full ' src={user?.photoURL} alt='avatar image' /></Link>
+                                    <li className='relative' onClick={() => setProfile(!profile)}>
+                                         <img className='w-8 h-8 rounded-full ' src={user?.photoURL} alt='avatar image' />
+                                        {
+                                            profile && dropDown
+                                        }
                                     </li>
                                 </>
                                 :
                                 <>
-                                    <li><NavLink to='/login'>Login</NavLink></li>
-                                    <li><NavLink to='/register'>Register</NavLink></li>
+                                    <li><NavLink to='/auth/login'>Login</NavLink></li>
+                                    <li><NavLink to='/auth/register'>Register</NavLink></li>
                                 </>
 
                         }

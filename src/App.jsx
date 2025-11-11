@@ -1,12 +1,67 @@
 import { RouterProvider } from "react-router"
 import { router } from "./router/router"
+import { Context } from "./context/AuthContext"
+import { useEffect, useState } from "react"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { auth } from "./firebase/firebase";
+
 
 
 function App() {
+  const [user, setUser] = useState();
+
+  async function createEmail(email, password, name, photoURL) {
+    try {
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+    
+
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: photoURL,
+      });
+
+
+      return user;
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  function signInEmail(email, pass) {
+    return signInWithEmailAndPassword(auth, email, pass)
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
+        console.log(CurrentUser)
+        setUser(CurrentUser)
+    })
+    return () => unsubscribe();
+  },[])
+
+
+
+  const data = {
+    user,
+    createEmail,
+    signInEmail
+
+  }
+
+
+
+
+
 
 
   return (
-    <RouterProvider router={router}> </RouterProvider>
+    <Context value={data}>
+      <RouterProvider router={router}> </RouterProvider>
+    </Context>
   )
 }
 
