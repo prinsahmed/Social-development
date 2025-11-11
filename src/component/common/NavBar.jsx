@@ -10,7 +10,7 @@ const NavBar = () => {
 
 
     const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gradient-to-b from-rose-100 via-amber-100 to-amber-50 text-gray-800 '>
-        <li><Link className='block'>Create Event</Link></li>
+        <li><Link to='/create-event'>Create Event</Link></li>
         <li><Link>Manage Events</Link></li>
         <li><Link>Joined Events</Link></li>
     </ul>
@@ -27,7 +27,7 @@ const NavBar = () => {
 
 
     return (
-        <div className=" lg:flex justify-between items-center  absolute  w-full z-50  backdrop-blur-[1px] ">
+        <div className=" lg:flex justify-between items-center mt-0  absolute  w-full z-50  backdrop-blur-[1px] ">
             <div className='flex  justify-between items-center pl-3'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

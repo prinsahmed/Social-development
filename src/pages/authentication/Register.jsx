@@ -2,37 +2,59 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import { Context } from '../../context/AuthContext';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../firebase/firebase';
 import { FcGoogle } from 'react-icons/fc';
+import { auth } from '../../firebase/firebase';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
-const Login = () => {
+const Register = () => {
     const [error, setError] = useState();
-    const { signInEmail } = useContext(Context);
     const [passEye, setPassEye] = useState(false);
+    const { createEmail } = useContext(Context);
     const googleProvider = new GoogleAuthProvider;
 
-    function handleSignIn(e) {
+
+
+    function handleSignInEmail(e) {
         e.preventDefault();
+        const name = e.target.name.value;
         const email = e.target.email.value;
+        const photoURL = e.target.photo.value;
         const pass = e.target.pass.value;
         const pattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         const passCheck = pattern.test(pass);
+
+
         if (!passCheck) {
             setError(true)
             return;
         }
 
         setError('');
-        signInEmail(email, pass)
-            .then(res => console.log(res.user))
-    }
+        createEmail(email, pass, name, photoURL)
+            .then(res => {
+                if (res) {
+                    Swal.fire({
+                        title: "Successfully Registered",
+                        text: `Welcome ${res.displayName}`,
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    });
 
+                }
+            })
+
+        e.target.reset()
+
+    }
 
     function handleSignInGoogle() {
         signInWithPopup(auth, googleProvider)
 
     }
+
+
+
 
 
     return (
@@ -42,9 +64,21 @@ const Login = () => {
                     Create Account
                 </h2>
 
-                <form onSubmit={handleSignIn} className="space-y-4">
+                <form onSubmit={handleSignInEmail} className="space-y-4">
+                    {/* Name */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
+                            Full Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Your full name"
+                            name='name'
+                            className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
+                        />
+                    </div>
 
-
+                    {/* Email */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
                             Email
@@ -57,6 +91,7 @@ const Login = () => {
                         />
                     </div>
 
+                    {/* Password */}
                     <div className='relative'>
                         <label className="block text-sm font-medium text-gray-700">
                             Password
@@ -69,11 +104,25 @@ const Login = () => {
                             name='pass'
                             className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
                         />
+
                         <div onClick={() => setPassEye(!passEye)} className='absolute right-4 top-9 cursor-pointer'>
                             {
                                 passEye ? <FaEye /> : <FaEyeSlash />
                             }
                         </div>
+                    </div>
+
+                    {/* Photo URL */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
+                            Photo URL
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="https://your-photo-link.com"
+                            name='photo'
+                            className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
+                        />
                     </div>
                     <div>
                         {
@@ -83,24 +132,27 @@ const Login = () => {
                     </div>
 
                     <div onClick={handleSignInGoogle} className=' btn text-center w-full'>
-                        <span>Log in with</span>
+                        <span>Sign in with</span>
                         <span className='text-3xl'>< FcGoogle /></span>
                     </div>
+
+                    {/* Submit Button */}
                     <button
 
                         className="w-full bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 rounded-xl shadow-md transition-all"
                     >
-                        Login
+                        Register
                     </button>
                 </form>
 
+                {/* Login Redirect */}
                 <p className="text-center text-sm text-gray-600 mt-4">
-                    Don't have an account?{" "}
+                    Already have an account?{" "}
                     <Link
-                        to="/auth/register"
+                        to="/auth/login"
                         className="text-amber-500 hover:underline font-medium"
                     >
-                        Sign up
+                        Login here
                     </Link>
                 </p>
             </div>
@@ -108,4 +160,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
