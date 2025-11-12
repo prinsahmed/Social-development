@@ -64,7 +64,7 @@ const UpdateEvent = () => {
                         type="text"
                         required
                         defaultValue={manageData.title}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        className="w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none"
                         placeholder="Enter event title"
                     />
                 </div>
@@ -76,7 +76,7 @@ const UpdateEvent = () => {
                         name="description"
                         required
                         defaultValue={manageData.description}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        className="w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none"
                         placeholder="Write a brief description"
                     />
                 </div>
@@ -88,7 +88,7 @@ const UpdateEvent = () => {
                         required
                         defaultValue={eventCat}
                         onChange={(e) => setEventCat(e.target.value)}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        className="w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none"
                     >
                         <option>Select Type</option>
                         <option>Cleanup</option>
@@ -105,7 +105,7 @@ const UpdateEvent = () => {
                         type="text"
                         required
                         defaultValue={manageData.photoURL}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        className="w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none"
                         placeholder="Enter image URL"
                     />
                 </div>
@@ -116,14 +116,14 @@ const UpdateEvent = () => {
                         type="text"
                         required
                         defaultValue={manageData.location}
-                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                        className="w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none"
                         placeholder="Enter location"
                     />
                 </div>
                 <div>
                     <label className="block mb-2 font-medium text-gray-700">Event Date</label>
                     <DatePicker
-                        className="border border-gray-300 rounded pl-3 py-0.5"
+                        className="border border-gray-300 rounded-xs pl-3 py-0.5"
                         selected={selectedDate}
                         required
                         onChange={(date) => setSelectedDate(date)}
@@ -133,7 +133,7 @@ const UpdateEvent = () => {
                 </div>
                 <button
 
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition-colors"
+                    className="w-full btn text-white font-semibold  rounded-sm"
                 >
                     Update
                 </button>

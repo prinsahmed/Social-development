@@ -13,15 +13,15 @@ const MainLayout = () => {
         <>
             <NavBar />
             <Banner />
-            <main className='bg-gradient-to-br from-blue-100 to-amber-50 min-h-screen'>
+            <main className='bg-gradient-to-br from-rose-100 via-amber-100 to-amber-50 min-h-screen'>
                 <div className='max-w-10/12 mx-auto'>
                     <Feature />
                     <Gallery />
-                    <NewsLetter/>
+                    <NewsLetter />
                 </div>
             </main>
             <footer>
-                <Footer/>
+                <Footer />
             </footer>
         </>
 

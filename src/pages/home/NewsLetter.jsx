@@ -26,8 +26,8 @@ const NewsLetter = () => {
                     />
                     <button
 
-                        className="w-full md:w-40 py-3 px-6 bg-sky-500 text-white font-semibold 
-                     rounded-lg shadow-md hover:bg-sky-600 transition duration-150 ease-in-out 
+                        className="w-full md:w-40 py-3 px-6   font-semibold 
+                     btn shadow-md 
                      flex-shrink-0"
                     >
                         Subscribe
@@ -40,7 +40,7 @@ const NewsLetter = () => {
                         className="h-4 w-4 text-sky-500 border-gray-300 rounded focus:ring-sky-500 mr-2"
                     />
                     <label htmlFor="terms-tailwind">
-                        I agree to the <span className="underline cursor-pointer text-sky-600">terms and conditions.</span>
+                        I agree to the <span className="underline cursor-pointer text-amber-500 hover:underline font-medium">terms and conditions.</span>
                     </label>
                 </div>
             </div>

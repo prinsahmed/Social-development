@@ -19,6 +19,17 @@
   
 } */
 
+.active{
+  border-bottom: 3px solid black;
+  
+}
+
+
+.btn{
+  @apply  bg-amber-300 hover:bg-amber-500
+}
+
+
 .feature-card{
   @apply bg-[#D9F0D9] rounded-sm p-4 
 }

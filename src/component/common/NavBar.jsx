@@ -10,9 +10,9 @@ const NavBar = () => {
 
 
     const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gradient-to-b from-rose-100 via-amber-100 to-amber-50 text-gray-800 '>
-        <li><Link to='/create-event'>Create Event</Link></li>
-        <li><Link to='/manage-event'>Manage Events</Link></li>
-        <li><Link to='/join-event' >Joined Events</Link></li>
+        <li><NavLink to='/create-event'>Create Event</NavLink></li>
+        <li><NavLink to='/manage-event'>Manage Events</NavLink></li>
+        <li><NavLink to='/join-event' >Joined Events</NavLink></li>
     </ul>
 
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const NavBar = () => {
 
 
     return (
-        <div className=" lg:flex justify-between items-center bg-black ">
+        <div className=" lg:flex justify-between items-center bg-gradient-to-r from-[#dc6b2e] via-[#F97316] to-[#c99660]">
             <div className='flex  justify-between items-center pl-3'>
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const NavBar = () => {
                         className="menu  menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 bg-gradient-to-b from-[#1E1E1E] via-[#3B2F2F] to-[#0F0A0A]  shadow">
                         <li><NavLink to='/'>Home</NavLink></li>
                         <li><NavLink to='/up-event' >Events</NavLink></li>
-                        
+
                         {
                             user ?
                                 <>
@@ -66,7 +66,7 @@ const NavBar = () => {
                     <ul className="menu navi text-white menu-horizontal px-1">
                         <li ><NavLink to='/'>Home</NavLink></li>
                         <li><NavLink to='/up-event' >Events</NavLink></li>
-                        
+
                         {
                             user ?
                                 <>

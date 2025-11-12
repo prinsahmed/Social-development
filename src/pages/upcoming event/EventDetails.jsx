@@ -59,7 +59,7 @@ const EventDetails = () => {
 
     return (
         <div className='flex justify-center items-center h-dvh'>
-            <div>
+            <div className='bg-white min-w-96 p-3 rounded-md min-h-1/2'>
                 <img src={eventDetails.photoURL} alt={eventDetails.title} />
                 <p className='my-5'>Description: {eventDetails.description}</p>
                 <button onClick={handleJoinEvent} className='btn'>Join Event</button>
