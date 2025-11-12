@@ -8,6 +8,8 @@ import UpcomingEventLayout from "../component/layout/UpcomingEventLayout";
 import PrivateRoute from "../component/common/PrivateRoute";
 import EventDetails from "../pages/upcoming event/EventDetails";
 import UpcomingEvent from "../pages/upcoming event/UpcomingEvent";
+import JoinEventLayout from "../component/layout/JoinEventLayout";
+import JoinedEvent from "../pages/joined event/JoinedEvent";
 
 
 
@@ -47,6 +49,16 @@ export const router = createBrowserRouter([
             {
                 path: '/up-event/details/:id',
                 Component: EventDetails
+            }
+        ]
+    },
+    {
+        path:'/join-event',
+        Component:JoinEventLayout,
+        children:[
+            {
+                index:true,
+                Component:JoinedEvent
             }
         ]
     }

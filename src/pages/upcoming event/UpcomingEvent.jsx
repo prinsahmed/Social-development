@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 
 const UpcomingEvent = () => {
     const [events, setEvents] = useState();
-    const[loading, setLoading] = useState(true);
- 
- console.log(events);
+    const [loading, setLoading] = useState(true);
+
+    console.log(events);
 
     useEffect(() => {
         axiosInstance.get('/events')
@@ -16,7 +16,7 @@ const UpcomingEvent = () => {
             })
     }, [])
 
-    if(loading){
+    if (loading) {
         return <span className="loading loading-bars loading-xl"></span>
     }
 
@@ -30,7 +30,7 @@ const UpcomingEvent = () => {
         <div className='grid grid-cols-3 gap-10'>
             {
                 events.map(event => {
-                  return  <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+                    return <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300">
                         <img
                             src={event.photoURL}
                             alt={event.title}
@@ -44,9 +44,9 @@ const UpcomingEvent = () => {
                                 Date: {new Date(event.selectedDate).toLocaleDateString()}
                             </p>
 
-                            <Link to={`/up-event/details/${event._id}`} className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <Link to={`/up-event/details/${event._id}`} className="mt-2 btn bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
                                 View Event
-                            </Link> 
+                            </Link>
                         </div>
                     </div>
                 })
