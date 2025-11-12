@@ -37,7 +37,7 @@ const JoinedEvent = () => {
                                     <h3>Title: {data.title}</h3>
                                     <h4>Category: {data.eventCat}</h4>
                                     <h5>Location: {data.location}</h5>
-                                    <h5>Date: {data.date}</h5>
+                                    <h5>Date: {data.selectedDate}</h5>
                                 </div>
                         </div>
                     })

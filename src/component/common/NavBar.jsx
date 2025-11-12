@@ -6,12 +6,12 @@ import { Context } from '../../context/AuthContext';
 
 const NavBar = () => {
     const [profile, setProfile] = useState(false);
-    const {user} = useContext(Context);
+    const { user } = useContext(Context);
 
 
     const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gradient-to-b from-rose-100 via-amber-100 to-amber-50 text-gray-800 '>
         <li><Link to='/create-event'>Create Event</Link></li>
-        <li><Link>Manage Events</Link></li>
+        <li><Link to='/manage-event'>Manage Events</Link></li>
         <li><Link to='/join-event' >Joined Events</Link></li>
     </ul>
 
@@ -73,7 +73,7 @@ const NavBar = () => {
 
                                     <button onClick={handleSignOut} className='btn mx-3'>Log Out</button>
                                     <li className='relative' onClick={() => setProfile(!profile)}>
-                                         <img className='w-8 h-8 rounded-full ' src={user?.photoURL} alt='avatar image' />
+                                        <img className='w-8 h-8 rounded-full ' src={user?.photoURL} alt='avatar image' />
                                         {
                                             profile && dropDown
                                         }

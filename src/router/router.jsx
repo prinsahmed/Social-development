@@ -10,6 +10,9 @@ import EventDetails from "../pages/upcoming event/EventDetails";
 import UpcomingEvent from "../pages/upcoming event/UpcomingEvent";
 import JoinEventLayout from "../component/layout/JoinEventLayout";
 import JoinedEvent from "../pages/joined event/JoinedEvent";
+import ManageEventLayout from "../component/layout/ManageEventLayout";
+import ManageEvent from "../pages/manage event/ManageEvent";
+import UpdateEvent from "../pages/manage event/UpdateEvent";
 
 
 
@@ -59,6 +62,21 @@ export const router = createBrowserRouter([
             {
                 index:true,
                 Component:JoinedEvent
+            }
+        ]
+    },
+    {
+        path:'/manage-event',
+        Component:ManageEventLayout,
+        children:
+        [
+            {
+                index:true,
+                Component:ManageEvent
+            },
+            {
+                path:'/manage-event/update-event/:id',
+                Component:UpdateEvent
             }
         ]
     }
