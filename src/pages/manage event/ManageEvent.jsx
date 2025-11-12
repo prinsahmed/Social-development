@@ -18,7 +18,7 @@ const ManageEvent = () => {
     useEffect(() => {
         axiosInstance.get(`/manage-event?email=${user?.email}`)
             .then(res => {
-                console.log(res.data)
+               
                 setManageData(res.data)
                 setLoading(false)
             })
@@ -44,7 +44,7 @@ const ManageEvent = () => {
             <div >
                 {
                     manageData.map(data => {
-                        return <div className='bg-blue-300 flex items-center gap-x-4 mt-3 p-3 rounded-sm'>
+                        return <div key={data._id} className='bg-blue-300 flex items-center gap-x-4 mt-3 p-3 rounded-sm'>
                             <img className='rounded-full w-[30px]' src={data.photoURL} alt={data.title} />
                             <div className='space-y-1'>
                                 <h3>Title: {data.title}</h3>

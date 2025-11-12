@@ -76,6 +76,7 @@ const Login = () => {
                             type="email"
                             placeholder="example@mail.com"
                             name='email'
+                            required
                             className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>

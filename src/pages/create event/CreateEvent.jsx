@@ -9,7 +9,6 @@ import { Context } from "../../context/AuthContext";
 const CreateEvent = () => {
     const { user } = useContext(Context);
     const [selectedDate, setSelectedDate] = useState(null);
-
     function handleCreateEvent(e) {
         e.preventDefault();
 
@@ -24,11 +23,6 @@ const CreateEvent = () => {
         }
 
         axiosInstance.post('/create-event', createEventData)
-            .then(res => console.log(res.data))
-
-
-
-
 
     }
 
@@ -45,6 +39,7 @@ const CreateEvent = () => {
                     <input
                         name="title"
                         type="text"
+                        required
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter event title"
                     />
@@ -55,6 +50,7 @@ const CreateEvent = () => {
                     <textarea
                         rows={4}
                         name="description"
+                        required
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Write a brief description"
                     />
@@ -64,6 +60,7 @@ const CreateEvent = () => {
                     <label className="block mb-1 font-medium text-gray-700">Event Type</label>
                     <select
                         name="event_category"
+                        required
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                     >
                         <option>Select Type</option>
@@ -79,6 +76,7 @@ const CreateEvent = () => {
                     <input
                         name="imageURL"
                         type="text"
+                        required
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter image URL"
                     />
@@ -88,6 +86,7 @@ const CreateEvent = () => {
                     <input
                         name="location"
                         type="text"
+                        required
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter location"
                     />
@@ -97,6 +96,7 @@ const CreateEvent = () => {
                     <DatePicker
                         className="border border-gray-300 rounded pl-3 py-0.5"
                         selected={selectedDate}
+                        required
                         onChange={(date) => setSelectedDate(date)}
                         minDate={subDays(new Date(), 5)}
                         placeholderText="Select a date"

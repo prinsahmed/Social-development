@@ -6,7 +6,6 @@ const UpcomingEvent = () => {
     const [events, setEvents] = useState();
     const [loading, setLoading] = useState(true);
 
-    console.log(events);
 
     useEffect(() => {
         axiosInstance.get('/events')
@@ -30,7 +29,7 @@ const UpcomingEvent = () => {
         <div className='grid grid-cols-3 gap-10'>
             {
                 events.map(event => {
-                    return <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300">
+                    return <div key={event._id} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300">
                         <img
                             src={event.photoURL}
                             alt={event.title}

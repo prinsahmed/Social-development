@@ -31,7 +31,7 @@ const JoinedEvent = () => {
             <div >
                 {
                     joinedData.map(data => {
-                        return <div className='bg-blue-300 flex items-center gap-x-4 mt-3 p-3 rounded-sm'>
+                        return <div key={data._id} className='bg-blue-300 flex items-center gap-x-4 mt-3 p-3 rounded-sm'>
                                 <img className='rounded-full w-[30px]' src={data.photoURL} alt={data.title} />
                                 <div className='space-y-1'>
                                     <h3>Title: {data.title}</h3>

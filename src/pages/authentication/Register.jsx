@@ -65,33 +65,32 @@ const Register = () => {
                 </h2>
 
                 <form onSubmit={handleSignInEmail} className="space-y-4">
-                    {/* Name */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
                             Full Name
                         </label>
                         <input
                             type="text"
+                            required
                             placeholder="Your full name"
                             name='name'
                             className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
 
-                    {/* Email */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
                             Email
                         </label>
                         <input
                             type="email"
+                            required
                             placeholder="example@mail.com"
                             name='email'
                             className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
 
-                    {/* Password */}
                     <div className='relative'>
                         <label className="block text-sm font-medium text-gray-700">
                             Password
@@ -112,7 +111,6 @@ const Register = () => {
                         </div>
                     </div>
 
-                    {/* Photo URL */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
                             Photo URL
@@ -121,6 +119,7 @@ const Register = () => {
                             type="text"
                             placeholder="https://your-photo-link.com"
                             name='photo'
+                            required
                             className="w-full mt-1 px-4 py-2 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
@@ -135,8 +134,6 @@ const Register = () => {
                         <span>Sign in with</span>
                         <span className='text-3xl'>< FcGoogle /></span>
                     </div>
-
-                    {/* Submit Button */}
                     <button
 
                         className="w-full bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 rounded-xl shadow-md transition-all"
@@ -145,7 +142,6 @@ const Register = () => {
                     </button>
                 </form>
 
-                {/* Login Redirect */}
                 <p className="text-center text-sm text-gray-600 mt-4">
                     Already have an account?{" "}
                     <Link

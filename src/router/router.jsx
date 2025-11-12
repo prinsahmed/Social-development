@@ -43,10 +43,10 @@ export const router = createBrowserRouter([
     },
     {
         path: '/up-event',
-        Component:UpcomingEventLayout , 
+        Component: UpcomingEventLayout,
         children: [
             {
-                index:true,
+                index: true,
                 Component: UpcomingEvent
             },
             {
@@ -56,28 +56,32 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path:'/join-event',
-        Component:JoinEventLayout,
-        children:[
+        path: '/join-event',
+        element: <PrivateRoute>
+            <JoinEventLayout />
+        </PrivateRoute>,
+        children: [
             {
-                index:true,
-                Component:JoinedEvent
+                index: true,
+                Component: JoinedEvent
             }
         ]
     },
     {
-        path:'/manage-event',
-        Component:ManageEventLayout,
+        path: '/manage-event',
+        element: <PrivateRoute>
+            <ManageEventLayout />
+        </PrivateRoute>,
         children:
-        [
-            {
-                index:true,
-                Component:ManageEvent
-            },
-            {
-                path:'/manage-event/update-event/:id',
-                Component:UpdateEvent
-            }
-        ]
+            [
+                {
+                    index: true,
+                    Component: ManageEvent
+                },
+                {
+                    path: '/manage-event/update-event/:id',
+                    Component: UpdateEvent
+                }
+            ]
     }
 ])

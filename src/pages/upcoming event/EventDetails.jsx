@@ -28,8 +28,16 @@ const EventDetails = () => {
 
 
     function handleJoinEvent() {
+
+
         if (user) {
-            axiosInstance.post('/join-event', eventDetails)
+            
+            const newUser = { ...eventDetails };
+            newUser.email = user.email;
+            newUser.id = newUser._id;
+            delete newUser._id
+
+            axiosInstance.post('/join-event', newUser)
                 .then(res => {
                     console.log(res)
 

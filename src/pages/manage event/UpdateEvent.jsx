@@ -17,7 +17,6 @@ const UpdateEvent = () => {
     useEffect(() => {
         axiosInstance.get(`/edit-event/${id}`)
             .then(res => {
-                console.log(res.data)
                 setManageData(res.data)
                 setEventCat(res.data.eventCat)
                 setSelectedDate(res.data.selectedDate)
@@ -42,7 +41,7 @@ const UpdateEvent = () => {
             selectedDate
         }
 
-        axiosInstance.put(`/update-event/${id}`,)
+        axiosInstance.put(`/update-event/${id}`, createEventData)
             .then(res => {
                 console.log(res)
             })
@@ -63,6 +62,7 @@ const UpdateEvent = () => {
                     <input
                         name="title"
                         type="text"
+                        required
                         defaultValue={manageData.title}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter event title"
@@ -74,7 +74,8 @@ const UpdateEvent = () => {
                     <textarea
                         rows={4}
                         name="description"
-                        value={manageData.description}
+                        required
+                        defaultValue={manageData.description}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Write a brief description"
                     />
@@ -84,6 +85,7 @@ const UpdateEvent = () => {
                     <label className="block mb-1 font-medium text-gray-700">Event Type</label>
                     <select
                         name="event_category"
+                        required
                         defaultValue={eventCat}
                         onChange={(e) => setEventCat(e.target.value)}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
@@ -101,6 +103,7 @@ const UpdateEvent = () => {
                     <input
                         name="imageURL"
                         type="text"
+                        required
                         defaultValue={manageData.photoURL}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter image URL"
@@ -111,6 +114,7 @@ const UpdateEvent = () => {
                     <input
                         name="location"
                         type="text"
+                        required
                         defaultValue={manageData.location}
                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         placeholder="Enter location"
@@ -121,17 +125,18 @@ const UpdateEvent = () => {
                     <DatePicker
                         className="border border-gray-300 rounded pl-3 py-0.5"
                         selected={selectedDate}
+                        required
                         onChange={(date) => setSelectedDate(date)}
                         minDate={subDays(new Date(), 5)}
                         placeholderText="Select a date"
                     />
                 </div>
-            <button
+                <button
 
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition-colors"
-            >
-                Update
-            </button>
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition-colors"
+                >
+                    Update
+                </button>
             </form>
         </div>
     );
