@@ -50,6 +50,17 @@ const Register = () => {
 
     function handleSignInGoogle() {
         signInWithPopup(auth, googleProvider)
+            .then(res => {
+                if (res) {
+                    Swal.fire({
+                        title: "Successfully Logged In",
+                        text: `Welcome ${res.user.displayName}`,
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    });
+
+                }
+            })
 
     }
 
@@ -130,7 +141,7 @@ const Register = () => {
                         }
                     </div>
 
-                    <div onClick={handleSignInGoogle} style={{background:'white'}} className=' btn text-center w-full'>
+                    <div onClick={handleSignInGoogle} style={{ background: 'white' }} className=' btn text-center w-full'>
                         <span>Sign in with</span>
                         <span className='text-3xl'>< FcGoogle /></span>
                     </div>

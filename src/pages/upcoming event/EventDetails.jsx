@@ -22,7 +22,7 @@ const EventDetails = () => {
     }, [id])
 
     if (loading) {
-        return <span className="loading loading-bars loading-xl"></span>
+        return <div className='flex justify-center h-dvh items-center'><span className="loading loading-dots loading-xl"></span></div>
     }
 
 
@@ -31,7 +31,7 @@ const EventDetails = () => {
 
 
         if (user) {
-            
+
             const newUser = { ...eventDetails };
             newUser.email = user.email;
             newUser.id = newUser._id;
@@ -39,7 +39,13 @@ const EventDetails = () => {
 
             axiosInstance.post('/join-event', newUser)
                 .then(res => {
-                    console.log(res)
+                    if (res) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Congratulations",
+                            text: "You have joined this event"
+                        });
+                    }
 
                 })
         }
@@ -58,11 +64,13 @@ const EventDetails = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-dvh'>
-            <div className='bg-white min-w-96 p-3 rounded-md min-h-1/2'>
-                <img src={eventDetails.photoURL} alt={eventDetails.title} />
+        <div className='flex justify-center items-center min-h-dvh'>
+            <div className='feature-card p-3 rounded-sm'>
+                <img className='w-[400px] h-[400px] block mx-auto rounded-sm' src={eventDetails.photoURL} alt={eventDetails.title} />
                 <p className='my-5'>Description: {eventDetails.description}</p>
-                <button onClick={handleJoinEvent} className='btn'>Join Event</button>
+                <div className='flex justify-center'>
+                    <button onClick={handleJoinEvent} className='btn'>Join Event</button>
+                </div>
             </div>
         </div>
     );

@@ -45,20 +45,31 @@ const Login = () => {
                     });
 
                 }
-               
+
             })
-            e.target.reset()
+        e.target.reset()
     }
 
 
     function handleSignInGoogle() {
         signInWithPopup(auth, googleProvider)
+            .then(res => {
+                if (res) {
+                    Swal.fire({
+                        title: "Successfully Logged In",
+                        text: `Welcome ${res.user.displayName}`,
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    });
+
+                }
+            })
 
     }
 
 
     return (
-        
+
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-100 via-amber-100 to-amber-50 px-4">
             <div className="w-full max-w-sm bg-white shadow-2xl rounded-2xl p-8">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
@@ -106,7 +117,7 @@ const Login = () => {
                         }
                     </div>
 
-                    <div onClick={handleSignInGoogle} style={{backgroundColor:'white'}} className=' mt-8 btn  text-center w-full'>
+                    <div onClick={handleSignInGoogle} style={{ backgroundColor: 'white' }} className=' mt-8 btn  text-center w-full'>
                         <span>Log in with</span>
                         <span className='text-3xl'>< FcGoogle /></span>
                     </div>

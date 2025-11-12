@@ -7,8 +7,8 @@ const Banner = () => {
         style={{
             backgroundImage:`url(${bannerImg})`
         }}>
-            <div className='flex justify-center items-center'>
-                <h1 className='font-bold text-7xl leading-22 text-gray-100  pt-38 hero-content1  text-center '>Together<br />for a Better Tomorrow</h1>
+            <div className='flex h-full justify-center items-center'>
+                <h1 className='font-bold text-7xl leading-22 text-gray-100   hero-content1  text-center '>Together<br />for a Better Tomorrow</h1>
             </div>
             
         </div>

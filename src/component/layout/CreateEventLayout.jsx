@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../common/NavBar';
 import CreateEvent from '../../pages/create event/CreateEvent';
+import Footer from '../common/Footer';
 
 
 const CreateEventLayout = () => {
@@ -13,6 +14,7 @@ const CreateEventLayout = () => {
                 <CreateEvent />
 
             </div>
+            <Footer/>
         </div>
     );
 };

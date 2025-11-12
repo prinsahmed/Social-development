@@ -24,6 +24,11 @@
   
 }
 
+.input{
+  @apply w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none
+}
+
+
 
 .btn{
   @apply  bg-amber-300 hover:bg-amber-500
@@ -31,7 +36,7 @@
 
 
 .feature-card{
-  @apply bg-[#D9F0D9] rounded-sm p-4 
+  @apply bg-[#D9F0D9] rounded-sm p-2 
 }
 
 .feature-head{

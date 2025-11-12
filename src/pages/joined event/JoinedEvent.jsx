@@ -21,18 +21,18 @@ const JoinedEvent = () => {
     }, [user?.email])
 
     if (loading) {
-        return <span className="loading loading-bars loading-xl"></span>
+        return <div className='flex justify-center h-dvh items-center'><span className="loading loading-dots loading-xl"></span></div>
     }
 
     return (
-        <div>
-            <h2 className='text-4xl font-medium text-center mt-10'>Events you joined</h2>
+        <div className='min-h-dvh'>
+            <h2 className='text-4xl font-medium text-center mt-14'>Events you joined</h2>
             <h3>Events: {joinedData.length}</h3>
-            <div >
+            <div className='pb-28'>
                 {
                     joinedData.map(data => {
-                        return <div key={data._id} className='bg-blue-300 flex items-center gap-x-4 mt-3 p-3 rounded-sm'>
-                                <img className='rounded-full w-[30px]' src={data.photoURL} alt={data.title} />
+                        return <div key={data._id} className='feature-card flex items-center gap-x-4 mt-3 rounded-sm'>
+                                <img className='w-[120px] h-[120px] rounded-sm' src={data.photoURL} alt={data.title} />
                                 <div className='space-y-1'>
                                     <h3>Title: {data.title}</h3>
                                     <h4>Category: {data.eventCat}</h4>

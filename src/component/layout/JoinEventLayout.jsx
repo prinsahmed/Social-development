@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../common/NavBar';
 import { Outlet } from 'react-router';
+import Footer from '../common/Footer';
 
 const JoinEventLayout = () => {
     return (
@@ -10,6 +11,7 @@ const JoinEventLayout = () => {
 
                 <Outlet />
             </div>
+            <Footer/>
         </div>
     );
 };
