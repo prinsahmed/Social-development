@@ -1,17 +1,17 @@
-# React + Vite
+Empowering communities through organized social activities, donations, and awareness programs.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: https://social-development-3792f.web.app/
 
-Currently, two official plugins are available:
+Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Community Events: Create, manage, and join social development events such as cleanups, donations, and awareness campaigns.
 
-## React Compiler
+Smart Filtering & Search: Easily find events by category or keyword in real time.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Light/Dark Theme Toggle: Enjoy a modern interface with theme customization that remembers your preference.
 
-## Expanding the ESLint configuration
+Secure Authentication: Firebase-based login and registration system with route protection for logged-in users.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# Social-development" 
+Upcoming Events Management: View all upcoming events sorted by date and explore event details with photos and locations.
+
+Responsive Design: Fully optimized for mobile, tablet, and desktop devices.
