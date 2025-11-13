@@ -8,7 +8,7 @@ const Gallery = () => {
     return (
         <div className='pt-28'>
             <h2 className='text-4xl font-semibold text-center pb-6'>Stories Through Pictures</h2>
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 lg:gap-y-0 gap-y-20 gap-x-4'>
                 <div >
                     <img className='h-[450px] w-full rounded-sm' src={treeImg} alt="Tree plantation image" />
                     <h2 className='font-medium text-center'>Tree Plantation</h2>

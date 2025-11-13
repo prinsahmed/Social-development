@@ -9,7 +9,7 @@ import { auth } from "./firebase/firebase";
 
 function App() {
   const [user, setUser] = useState();
-
+  const [loading, setLoading] = useState(true);
 
   async function createEmail(email, password, name, photoURL) {
     try {
@@ -40,6 +40,7 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
       console.log(CurrentUser)
       setUser(CurrentUser)
+      setLoading(false)
     })
     return () => unsubscribe();
   }, [])
@@ -49,8 +50,9 @@ function App() {
   const data = {
     user,
     createEmail,
-    signInEmail
-  
+    signInEmail,
+    loading
+
 
   }
 

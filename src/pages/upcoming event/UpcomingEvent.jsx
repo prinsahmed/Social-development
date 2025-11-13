@@ -89,7 +89,7 @@ const UpcomingEvent = () => {
             </div>
 
 
-            <div className='grid grid-cols-3 pb-28 gap-16'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 pb-28 gap-16'>
                 {
 
 
@@ -109,7 +109,7 @@ const UpcomingEvent = () => {
                                 className="w-full h-60 object-cover rounded-sm"
                             />
                             <div className="space-y-2 min-h-[150px] ">
-                                <h3 className="text-lg font-semibold text-gray-800">{event.title}</h3>
+                                <h3 className="text-lg font-semibold ">{event.title}</h3>
                                 <p className="text-gray-500 text-sm">{event.location}</p>
                                 <p className="text-gray-500 text-sm">Type: {event.eventCat}</p>
                                 <p className="text-gray-500 text-sm">

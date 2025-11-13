@@ -3,50 +3,78 @@
 
 
 
+body {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 
-/* .hero1::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, .2);
 }
 
 
-.hero-content1 {
-  position: relative; 
-  z-index: 1;
-  
-  
-} */
 
-.active{
+
+
+
+
+
+
+:root {
+  --bg-color: #fffaf0;
+  --bg-card: #D9F0D9;
+  
+}
+
+[data-theme='dark'] {
+  --bg-color: #2c2c2c;
+  --bg-card: #272727;
+  --text-primary:#cfcfcf;
+}
+
+main {
+  background-color: var(--bg-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+.active {
   border-bottom: 3px solid black;
-  
+
 }
 
-.input{
+.input {
   @apply w-full border border-gray-300 rounded-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 outline-none
 }
 
 
 
-.btn{
-  @apply  bg-amber-300 hover:bg-amber-500
+.btn {
+  @apply bg-amber-500 hover:bg-amber-700
 }
 
 
-.feature-card{
-  @apply bg-[#D9F0D9] rounded-sm p-2 
+.feature-card {
+  @apply bg-[var(--bg-card)] text-[var(--text-primary)] rounded-sm p-2
 }
 
-.feature-head{
- @apply text-center text-xl font-medium 
+.feature-head {
+  @apply text-center text-xl font-medium
 }
 
-.feature-location{
+.feature-location {
   @apply text-[18px] font-semibold
 }
 
-.feature-number{
+.feature-number {
   @apply text-[18px] font-semibold
 }

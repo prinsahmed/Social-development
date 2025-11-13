@@ -69,7 +69,7 @@ const Register = () => {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-100 via-amber-100 to-amber-50 px-4">
+        <div className="min-h-screen flex items-center justify-center  px-4">
             <div className="w-full max-w-sm bg-white shadow-2xl rounded-2xl p-8">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
                     Create Account
@@ -85,7 +85,7 @@ const Register = () => {
                             required
                             placeholder="Your full name"
                             name='name'
-                            className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
+                            className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
 
@@ -98,7 +98,7 @@ const Register = () => {
                             required
                             placeholder="example@mail.com"
                             name='email'
-                            className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-xs  focus:ring-2 focus:ring-amber-400 outline-none"
+                            className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs  focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
 
@@ -112,7 +112,7 @@ const Register = () => {
                             }
                             placeholder="Enter password"
                             name='pass'
-                            className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-xs l focus:ring-2 focus:ring-amber-400 outline-none"
+                            className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs l focus:ring-2 focus:ring-amber-400 outline-none"
                         />
 
                         <div onClick={() => setPassEye(!passEye)} className='absolute right-4 top-9 cursor-pointer'>
@@ -131,7 +131,7 @@ const Register = () => {
                             placeholder="https://your-photo-link.com"
                             name='photo'
                             required
-                            className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-xs  focus:ring-2 focus:ring-amber-400 outline-none"
+                            className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs  focus:ring-2 focus:ring-amber-400 outline-none"
                         />
                     </div>
                     <div>

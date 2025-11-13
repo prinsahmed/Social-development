@@ -3,13 +3,15 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import { auth } from '../../firebase/firebase';
 import { Context } from '../../context/AuthContext';
+import ThemeSwitcher from './ThemeSwitcher';
+
 
 const NavBar = () => {
     const [profile, setProfile] = useState(false);
     const { user } = useContext(Context);
 
 
-    const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gradient-to-b from-rose-100 via-amber-100 to-amber-50 text-gray-800 '>
+    const dropDown = <ul className='absolute top-12 -right-1 p-0 rounded-sm  w-[150px] bg-gray-600 '>
         <li><NavLink to='/create-event'>Create Event</NavLink></li>
         <li><NavLink to='/manage-event'>Manage Events</NavLink></li>
         <li><NavLink to='/join-event' >Joined Events</NavLink></li>
@@ -35,7 +37,8 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu  menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 bg-gradient-to-b from-[#1E1E1E] via-[#3B2F2F] to-[#0F0A0A]  shadow">
+                        className="menu  menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2  bg-gray-600   shadow">
+                            <ThemeSwitcher/>
                         <li><NavLink to='/'>Home</NavLink></li>
                         <li><NavLink to='/up-event' >Events</NavLink></li>
 
@@ -44,7 +47,12 @@ const NavBar = () => {
                                 <>
 
                                     <button onClick={handleSignOut} className='md:btn my-1 hover:text-red-700 cursor-pointer text-left mx-3'>Log Out</button>
-
+                                    <li className='relative' onClick={() => setProfile(!profile)}>
+                                        <img className='w-8 h-8 p-0 rounded-full ' src={user?.photoURL} alt='avatar image' />
+                                        {
+                                            profile && dropDown
+                                        }
+                                    </li>
                                 </>
                                 :
                                 <>
@@ -54,8 +62,10 @@ const NavBar = () => {
 
                         }
                     </ul>
+                    
                 </div>
-                <Link to='/'>Social</Link>
+                
+                <Link className='text-lg text-white font-semibold' to='/'>BrightPath</Link>
             </div>
 
 
@@ -64,6 +74,7 @@ const NavBar = () => {
             <div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu navi text-white menu-horizontal px-1">
+                        <ThemeSwitcher/>
                         <li ><NavLink to='/'>Home</NavLink></li>
                         <li><NavLink to='/up-event' >Events</NavLink></li>
 
@@ -73,7 +84,7 @@ const NavBar = () => {
 
                                     <button onClick={handleSignOut} className='btn mx-3'>Log Out</button>
                                     <li className='relative' onClick={() => setProfile(!profile)}>
-                                        <img className='w-8 h-8 rounded-full ' src={user?.photoURL} alt='avatar image' />
+                                        <img className='w-10 h-10 p-0 rounded-full ' src={user?.photoURL} alt='avatar image' />
                                         {
                                             profile && dropDown
                                         }

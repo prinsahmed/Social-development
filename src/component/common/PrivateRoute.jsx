@@ -1,17 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { Context } from '../../context/AuthContext';
-import { Navigate} from 'react-router';
+import { Navigate } from 'react-router';
 
-const PrivateRoute = ({children}) => {
-    const {user} = useContext(Context);
-    
+const PrivateRoute = ({ children }) => {
+    const { user, loading } = useContext(Context);
 
-    if(!user){
-        return <Navigate  to='/auth/login'></Navigate>
+
+    if (loading) {
+        return <div className='flex justify-center h-dvh items-center'><span className="loading loading-dots loading-xl"></span></div>
     }
-
-
-
+    
+    
+    
+    if (!user) {
+        return <Navigate to='/auth/login'></Navigate>
+    }
     return (
         <div>
             {children}

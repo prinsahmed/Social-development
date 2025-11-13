@@ -4,8 +4,8 @@ const Feature = () => {
     return (
         <div className='pt-28 '>
             <h2 className='text-4xl font-semibold text-center pb-6'>What We Do</h2>
-            <div className='grid grid-cols-3 gap-4'>
-                <div className='feature-card '>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4'>
+                <div className='feature-card dark:bg-base-100 '>
                     <div className='min-h-[200px]'>
                         <h2 className='feature-head'>Tree Plantation </h2>
                         <p className='py-2'>Join our community-driven tree plantation     |

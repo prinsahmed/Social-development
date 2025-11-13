@@ -7,13 +7,15 @@ import NewsLetter from '../../pages/home/NewsLetter.jsx';
 import Footer from '../common/Footer.jsx';
 
 
+
 const MainLayout = () => {
     return (
 
         <>
+
             <NavBar />
             <Banner />
-            <main className='bg-gradient-to-br from-rose-100 via-amber-100 to-amber-50 min-h-screen'>
+            <main className='min-h-screen'>
                 <div className='max-w-10/12 mx-auto'>
                     <Feature />
                     <Gallery />
