@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/AuthContext';
 import { axiosInstance } from '../../api/axiosInstance';
 import { Link } from 'react-router';
-
+import { motion } from "motion/react"
 
 
 
@@ -35,12 +35,22 @@ const ManageEvent = () => {
     return (
         <>
             <div>
-                <h2 className='text-4xl font-medium text-center my-14'>Manage Event</h2>
-                <h3>Events: {manageData.length}</h3>
+                {
+                    manageData.length === 0 ? <h2 className=' text-center underline text-4xl my-14 font-medium '>No Events Managed.</h2> : <h2 className='text-center underline text-4xl my-14 font-medium '>Managed Events</h2>
+                }
+                <h3 className='text-xl font-medium'>Events: ({manageData.length})</h3>
                 <div className='pb-28'>
                     {
                         manageData.map(data => {
-                            return <div key={data._id} className='feature-card flex items-center gap-x-4 mt-3 rounded-sm'>
+                            return <motion.div
+
+                                initial={{ opacity: 0, scale: .7 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.2,
+                                    ease: [0, 0.71, 0.2, 1.01],
+                                }}
+                                key={data._id} className='feature-card flex items-center gap-x-4 mt-3 rounded-sm'>
                                 <img className=' w-[120px] h-[120px] rounded-sm' src={data.photoURL} alt={data.title} />
                                 <div className='space-y-1'>
                                     <h3>Title: {data.title}</h3>
@@ -48,12 +58,12 @@ const ManageEvent = () => {
                                     <h5>Location: {data.location}</h5>
                                     <Link to={`/manage-event/update-event/${data._id}`} className='btn'>Edit Event</Link>
                                 </div>
-                            </div>
+                            </motion.div>
                         })
                     }
                 </div>
             </div>
-            
+
         </>
 
     );
