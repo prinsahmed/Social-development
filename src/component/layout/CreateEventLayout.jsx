@@ -8,13 +8,13 @@ const CreateEventLayout = () => {
     return (
 
         <div className=' min-h-screen'>
-                <NavBar />
+            <NavBar />
             <div className='max-w-10/12 mx-auto'>
-
+                <title>Create-Event</title>
                 <CreateEvent />
 
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

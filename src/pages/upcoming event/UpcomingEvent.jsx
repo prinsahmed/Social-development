@@ -59,7 +59,7 @@ const UpcomingEvent = () => {
 
     return (
         <div className='min-h-dvh'>
-
+            <title>Events</title>
             {
                 events.length === 0 ? <h2 className=' text-center underline text-4xl my-14 font-medium '>No Events Available.</h2> : <h2 className='text-center underline text-4xl my-14 font-medium '>Upcoming Events...</h2>
             }
@@ -95,7 +95,7 @@ const UpcomingEvent = () => {
 
                     events.map(event => {
                         return <motion.div
-                            
+
                             initial={{ opacity: 0, scale: .7 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{

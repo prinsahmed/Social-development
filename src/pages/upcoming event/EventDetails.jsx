@@ -64,15 +64,19 @@ const EventDetails = () => {
 
 
     return (
-        <div className='flex justify-center items-center min-h-dvh'>
-            <div className='feature-card p-3 rounded-sm'>
-                <img className='w-[400px] h-[400px] block mx-auto rounded-sm' src={eventDetails.photoURL} alt={eventDetails.title} />
-                <p className='my-5'>Description: {eventDetails.description}</p>
-                <div className='flex justify-center'>
-                    <button onClick={handleJoinEvent} className='btn'>Join Event</button>
+        <>
+
+            <div className='flex justify-center items-center min-h-dvh'>
+            <title>Event Details</title>
+                <div className='feature-card p-3 rounded-sm'>
+                    <img className='w-[400px] h-[400px] block mx-auto rounded-sm' src={eventDetails.photoURL} alt={eventDetails.title} />
+                    <p className='my-5'>Description: {eventDetails.description}</p>
+                    <div className='flex justify-center'>
+                        <button onClick={handleJoinEvent} className='btn'>Join Event</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

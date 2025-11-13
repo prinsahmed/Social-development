@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import MainLayout from "../component/layout/MainLayout";
 import RegisterLayout from "../component/layout/RegisterLayout";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
@@ -13,13 +12,14 @@ import JoinedEvent from "../pages/joined event/JoinedEvent";
 import ManageEventLayout from "../component/layout/ManageEventLayout";
 import ManageEvent from "../pages/manage event/ManageEvent";
 import UpdateEvent from "../pages/manage event/UpdateEvent";
+import HomeLayout from "../component/layout/HomeLayout";
 
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        Component: MainLayout
+        Component: HomeLayout
     },
     {
         path: '/auth',

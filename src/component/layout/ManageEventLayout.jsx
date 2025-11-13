@@ -8,6 +8,7 @@ const ManageEventLayout = () => {
         <div className='min-h-dvh'>
                 <NavBar />
             <div className='max-w-10/12 mx-auto min-h-dvh'>
+            <title>Manage Event</title>
                 <Outlet />
 
             </div>

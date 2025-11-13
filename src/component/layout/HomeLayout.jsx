@@ -8,7 +8,7 @@ import Footer from '../common/Footer.jsx';
 
 
 
-const MainLayout = () => {
+const HomeLayout = () => {
     return (
 
         <>
@@ -16,6 +16,7 @@ const MainLayout = () => {
             <NavBar />
             <Banner />
             <main className='min-h-screen'>
+                <title>Home</title>
                 <div className='max-w-10/12 mx-auto'>
                     <Feature />
                     <Gallery />
@@ -31,4 +32,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+export default HomeLayout;
