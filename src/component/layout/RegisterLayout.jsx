@@ -1,14 +1,15 @@
-import React from 'react';
-import NavBar from '../common/NavBar';
-import { Outlet } from 'react-router';
+import React from "react";
+import NavBar from "../common/NavBar";
+import { Outlet } from "react-router";
+
 
 const RegisterLayout = () => {
-    return (
-        <>
-            <NavBar />
-            <Outlet/>
-        </>
-    );
+  return (
+    <div className="bg-(--bg-color)">
+      <NavBar />
+      <Outlet />
+    </div>
+  );
 };
 
 export default RegisterLayout;

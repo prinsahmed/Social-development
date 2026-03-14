@@ -4,7 +4,7 @@ import { auth } from "../firebase/firebase";
 
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://social-development-server-nine.vercel.app',
+    baseURL: 'http://localhost:3000',
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json'

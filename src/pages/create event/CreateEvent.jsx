@@ -5,125 +5,131 @@ import { subDays } from "date-fns";
 import { axiosInstance } from "../../api/axiosInstance";
 import { Context } from "../../context/AuthContext";
 import Swal from "sweetalert2";
-
+import CardAnimation from "../../component/CardAnimation";
 
 const CreateEvent = () => {
-    const { user } = useContext(Context);
-    const [selectedDate, setSelectedDate] = useState(null);
-    function handleCreateEvent(e) {
-        e.preventDefault();
+  const { user } = useContext(Context);
+  const [selectedDate, setSelectedDate] = useState(null);
+  function handleCreateEvent(e) {
+    e.preventDefault();
 
-        const createEventData = {
-            title: e.target.title.value,
-            email: user.email,
-            description: e.target.description.value,
-            eventCat: e.target.event_category.value,
-            photoURL: e.target.imageURL.value,
-            location: e.target.location.value,
-            selectedDate
-        }
+    const createEventData = {
+      title: e.target.title.value,
+      email: user.email,
+      description: e.target.description.value,
+      eventCat: e.target.event_category.value,
+      photoURL: e.target.imageURL.value,
+      location: e.target.location.value,
+      selectedDate,
+    };
 
-        axiosInstance.post('/create-event', createEventData)
-            .then(res => {
+    axiosInstance.post("/create-event", createEventData).then((res) => {
+      if (res) {
+        Swal.fire({
+          icon: "success",
+          title: "Congratulations",
+          text: "Event successfully created",
+        });
+      }
+    });
+    e.target.reset();
+  }
 
-                if (res) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Congratulations",
-                        text: "Event successfully created"
-                    });
-                }
-            })
-        e.target.reset();
-    }
+  return (
+    <CardAnimation
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="pb-28"
+    >
+      <div className="max-w-xl mx-auto mt-10  bg-white p-8 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+          Create New Event
+        </h2>
+        <form onSubmit={handleCreateEvent} className="space-y-4">
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Event Title
+            </label>
+            <input
+              name="title"
+              type="text"
+              required
+              className="input"
+              placeholder="Enter event title"
+            />
+          </div>
 
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Description
+            </label>
+            <textarea
+              rows={4}
+              name="description"
+              required
+              className="input"
+              placeholder="Write a brief description"
+            />
+          </div>
 
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Event Type
+            </label>
+            <select name="event_category" required className="input">
+              <option>Select Type</option>
+              <option>Cleanup</option>
+              <option>Plantation</option>
+              <option>Donation</option>
+              <option>Awareness</option>
+            </select>
+          </div>
 
-
-    return (
-        <div className="pb-28">
-            <div className="max-w-xl mx-auto mt-10  bg-white p-8 rounded-xl shadow-lg">
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Create New Event</h2>
-                <form onSubmit={handleCreateEvent} className="space-y-4">
-
-                    <div>
-                        <label className="block mb-1 font-medium text-gray-700">Event Title</label>
-                        <input
-                            name="title"
-                            type="text"
-                            required
-                            className="input"
-                            placeholder="Enter event title"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block mb-1 font-medium text-gray-700">Description</label>
-                        <textarea
-                            rows={4}
-                            name="description"
-                            required
-                            className="input"
-                            placeholder="Write a brief description"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block mb-1 font-medium text-gray-700">Event Type</label>
-                        <select
-                            name="event_category"
-                            required
-                            className="input"
-                        >
-                            <option>Select Type</option>
-                            <option>Cleanup</option>
-                            <option>Plantation</option>
-                            <option>Donation</option>
-                            <option>Awareness</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label className="block mb-1 font-medium text-gray-700">Thumbnail Image URL</label>
-                        <input
-                            name="imageURL"
-                            type="text"
-                            required
-                            className="input"
-                            placeholder="Enter image URL"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-1 font-medium text-gray-700">Location</label>
-                        <input
-                            name="location"
-                            type="text"
-                            required
-                            className="input"
-                            placeholder="Enter location"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-2 font-medium text-gray-700">Event Date</label>
-                        <DatePicker
-                            className="border border-gray-300 rounded-xs pl-3 py-0.5"
-                            selected={selectedDate}
-                            required
-                            onChange={(date) => setSelectedDate(date)}
-                            minDate={subDays(new Date(), 0)}
-                            placeholderText="Select a date"
-                        />
-                    </div>
-                    <button
-
-                        className="w-full btn text-white font-semibold"
-                    >
-                        Create Event
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Thumbnail Image URL
+            </label>
+            <input
+              name="imageURL"
+              type="text"
+              required
+              className="input"
+              placeholder="Enter image URL"
+            />
+          </div>
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Location
+            </label>
+            <input
+              name="location"
+              type="text"
+              required
+              className="input"
+              placeholder="Enter location"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium text-gray-700">
+              Event Date
+            </label>
+            <DatePicker
+              className="border border-gray-300 rounded-xs pl-3 py-0.5"
+              selected={selectedDate}
+              required
+              onChange={(date) => setSelectedDate(date)}
+              minDate={subDays(new Date(), 0)}
+              placeholderText="Select a date"
+            />
+          </div>
+          <button className="w-full btn text-white font-semibold">
+            Create Event
+          </button>
+        </form>
+      </div>
+    </CardAnimation>
+  );
 };
 
 export default CreateEvent;

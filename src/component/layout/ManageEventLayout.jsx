@@ -5,7 +5,7 @@ import Footer from '../common/Footer';
 
 const ManageEventLayout = () => {
     return (
-        <div className='min-h-dvh'>
+        <div className='min-h-dvh bg-(--bg-color)'>
                 <NavBar />
             <div className='max-w-10/12 mx-auto min-h-dvh'>
             <title>Manage Event</title>

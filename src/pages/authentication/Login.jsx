@@ -1,147 +1,148 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
-import { Context } from '../../context/AuthContext';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../firebase/firebase';
-import { FcGoogle } from 'react-icons/fc';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import Swal from 'sweetalert2';
-
-
-
-
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { Context } from "../../context/AuthContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import CardAnimation from "../../component/CardAnimation";
 
 const Login = () => {
+  const [error, setError] = useState();
+  const { signInEmail } = useContext(Context);
+  const [passEye, setPassEye] = useState(false);
+  const googleProvider = new GoogleAuthProvider();
+  const navigate = useNavigate();
 
-    const [error, setError] = useState();
-    const { signInEmail } = useContext(Context);
-    const [passEye, setPassEye] = useState(false);
-    const googleProvider = new GoogleAuthProvider;
+  function handleSignIn(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass = e.target.pass.value;
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const passCheck = pattern.test(pass);
 
+    if (!passCheck) {
+      setError(true);
+      return;
+    }
 
-
-
-    function handleSignIn(e) {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const pass = e.target.pass.value;
-        const pattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        const passCheck = pattern.test(pass);
-
-        if (!passCheck) {
-            setError(true)
-            return;
+    setError("");
+    signInEmail(email, pass)
+      .then((res) => {
+        if (res) {
+          Swal.fire({
+            title: "Successfully Logged In",
+            text: `Welcome ${res.user.displayName}`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
         }
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: "Login failed",
+          text: err.message,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+    e.target.reset();
+  }
 
-        setError('');
-        signInEmail(email, pass)
-            .then(res => {
-                if (res) {
-                    Swal.fire({
-                        title: "Successfully Logged In",
-                        text: `Welcome ${res.user.displayName}`,
-                        icon: "success",
-                        confirmButtonText: "OK",
-                    });
+  function handleSignInGoogle() {
+    signInWithPopup(auth, googleProvider).then((res) => {
+      if (res) {
+        Swal.fire({
+          title: "Successfully Logged In",
+          text: `Welcome ${res.user.displayName}`,
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(() => navigate('/up-event'))
+      }
+    });
+  }
 
-                }
+  return (
+    <CardAnimation
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen flex items-center justify-center  px-4"
+    >
+      <title>Login</title>
+      <div className="w-full max-w-sm bg-white shadow-2xl rounded-2xl p-8">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Login
+        </h2>
 
-            })
-        e.target.reset()
-    }
+        <form onSubmit={handleSignIn} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="example@mail.com"
+              name="email"
+              required
+              className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
+            />
+          </div>
 
-
-    function handleSignInGoogle() {
-        signInWithPopup(auth, googleProvider)
-            .then(res => {
-                if (res) {
-                    Swal.fire({
-                        title: "Successfully Logged In",
-                        text: `Welcome ${res.user.displayName}`,
-                        icon: "success",
-                        confirmButtonText: "OK",
-                    });
-
-                }
-            })
-
-    }
-
-
-    return (
-
-        <div className="min-h-screen flex items-center justify-center  px-4">
-            <title>Login</title>
-            <div className="w-full max-w-sm bg-white shadow-2xl rounded-2xl p-8">
-                <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-                    Login
-                </h2>
-
-                <form onSubmit={handleSignIn} className="space-y-4">
-
-
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="example@mail.com"
-                            name='email'
-                            required
-                            className="w-full mt-1 px-4 py-2 border placeholder-gray-500 border-gray-300 rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
-                        />
-                    </div>
-
-                    <div className='relative'>
-                        <label className="block text-sm font-medium text-gray-700">
-                            Password
-                        </label>
-                        <input
-                            type={
-                                passEye ? 'text' : 'password'
-                            }
-                            placeholder="Enter password"
-                            name='pass'
-                            className="w-full mt-1 px-4 py-2 border-gray-300 placeholder-gray-500  border rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
-                        />
-                        <div onClick={() => setPassEye(!passEye)} className='absolute right-4 top-9 cursor-pointer'>
-                            {
-                                passEye ? <FaEye /> : <FaEyeSlash />
-                            }
-                        </div>
-                    </div>
-                    <div>
-                        {
-                            error && <span className='text-red-600 text-xs'>Password must have an Uppercase
-                                letter, a Lowercase letter and length must be at least 6 character</span>
-                        }
-                    </div>
-
-                    <div onClick={handleSignInGoogle} style={{ backgroundColor: 'white' }} className=' mt-8 btn  text-center w-full'>
-                        <span>Log in with</span>
-                        <span className='text-3xl'>< FcGoogle /></span>
-                    </div>
-                    <button
-
-                        className="w-full bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 rounded-md shadow-md transition-all"
-                    >
-                        Login
-                    </button>
-                </form>
-
-                <p className="text-center text-sm text-gray-600 mt-4">
-                    Don't have an account?{" "}
-                    <Link
-                        to="/auth/register"
-                        className="text-amber-500 hover:underline font-medium"
-                    >
-                        Sign up
-                    </Link>
-                </p>
+          <div className="relative">
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type={passEye ? "text" : "password"}
+              placeholder="Enter password"
+              name="pass"
+              className="w-full mt-1 px-4 py-2 border-gray-300 placeholder-gray-500  border rounded-xs focus:ring-2 focus:ring-amber-400 outline-none"
+            />
+            <div
+              onClick={() => setPassEye(!passEye)}
+              className="absolute right-4 top-9 cursor-pointer"
+            >
+              {passEye ? <FaEye /> : <FaEyeSlash />}
             </div>
-        </div>
-    );
+          </div>
+          <div>
+            {error && (
+              <span className="text-red-600 text-xs">
+                Password must have an Uppercase letter, a Lowercase letter and
+                length must be at least 6 character
+              </span>
+            )}
+          </div>
+
+          <div
+            onClick={handleSignInGoogle}
+            style={{ backgroundColor: "white" }}
+            className=" mt-8 btn  text-center w-full"
+          >
+            <span>Log in with</span>
+            <span className="text-3xl">
+              <FcGoogle />
+            </span>
+          </div>
+          <button className="w-full bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 rounded-md shadow-md transition-all">
+            Login
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-gray-600 mt-4">
+          Don't have an account?{" "}
+          <Link
+            to="/auth/register"
+            className="text-amber-500 hover:underline font-medium"
+          >
+            Sign up
+          </Link>
+        </p>
+      </div>
+    </CardAnimation>
+  );
 };
 
 export default Login;

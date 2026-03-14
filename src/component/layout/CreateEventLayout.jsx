@@ -7,7 +7,7 @@ import Footer from '../common/Footer';
 const CreateEventLayout = () => {
     return (
 
-        <div className=' min-h-screen'>
+        <div className=' min-h-screen bg-(--bg-color)'>
             <NavBar />
             <div className='max-w-10/12 mx-auto'>
                 <title>Create-Event</title>
